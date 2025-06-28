@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-bg: #1a1a1a;
+  --secondary-bg: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+}
+
+body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #242424;
+  z-index: 1;
+}
+
+.leaflet-control-container {
+  z-index: 1;
+}
+
+.dark-theme .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+.dark-theme .leaflet-container {
+  background: #242424;
+}
+
+.map-legend {
+  background: rgba(45, 45, 45, 0.9);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.incident-list {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-secondary) var(--primary-bg);
+}
+
+.incident-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.incident-list::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+.incident-list::-webkit-scrollbar-thumb {
+  background-color: var(--text-secondary);
+  border-radius: 4px;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Override Leaflet controls z-index */
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 40 !important;
+}
+
+/* Ensure UI elements stay above map */
+.map-overlay {
+  z-index: 45;
+}
+
+/* Modal should be above everything */
+.modal-overlay {
+  z-index: 50;
+}
